@@ -17,7 +17,7 @@ class arc_it(Frame) :
         else :
           self.coil_state = 0x00
         msg = chr(0x00) + chr(0x00) + chr(0x00) + chr(0x00) + chr(0x00) + chr(0x06) + chr(0x00)#trans protocol length unit
-        msg = msg + chr(0x05) + chr(0x00) + chr(0x0a) + chr(0x00) + chr(self.coil_state) 
+        msg = msg + chr(0x05) + chr(0x00) + chr(0x0a) + chr(self.coil_state) + chr(0x00) 
         self.ser.send( msg.encode('iso-8859-1') )
         response = self.ser.recv(12).decode('iso-8859-1')
         self.read_mass()
